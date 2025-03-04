@@ -13,15 +13,17 @@ public class LiDARCaptureSession: NSObject {
         case noDepthDataAvailable
     }
     
-    private let session = ARSession()
-    private let configuration = ARWorldTrackingConfiguration()
+    private let session: ARSession
+    private let configuration: ARWorldTrackingConfiguration
     public weak var delegate: LiDARCaptureDelegate?
     
     public var isRunning: Bool {
         session.currentFrame != nil
     }
     
-    public override init() {
+    public init(session: ARSession? = nil) {
+        self.session = session ?? ARSession()
+        self.configuration = ARWorldTrackingConfiguration()
         super.init()
         setupSession()
     }
@@ -34,7 +36,8 @@ public class LiDARCaptureSession: NSObject {
             return
         }
         
-        configuration.frameSemantics = .sceneDepth
+        // Enable both scene depth and smoothed scene depth
+        configuration.frameSemantics = [.sceneDepth, .smoothedSceneDepth]
     }
     
     public func startCapture() {
@@ -62,12 +65,60 @@ public class LiDARCaptureSession: NSObject {
             }
         }
         
-        // Process depth data and create points
-        // This is a simplified version - in practice, you'd want to:
-        // 1. Use vImage or Metal for faster processing
-        // 2. Implement proper depth to world space conversion
-        // 3. Add filtering for noisy points
-        // 4. Handle confidence values properly
+        // Get base address of depth and confidence buffers
+        guard let depthData = CVPixelBufferGetBaseAddress(depthMap) else { return points }
+        
+        let confidenceData = confidence.flatMap { buffer -> UnsafeMutableRawPointer? in
+            CVPixelBufferGetBaseAddress(buffer)
+        }
+        
+        // Get bytes per row for efficient traversal
+        let depthBytesPerRow = CVPixelBufferGetBytesPerRow(depthMap)
+        let confidenceBytesPerRow = confidence.map { CVPixelBufferGetBytesPerRow($0) } ?? 0
+        
+        // Create arrays to store echo data
+        var echoPoints: [(position: SIMD3<Float>, confidence: Float)] = []
+        
+        // Process depth data
+        for y in 0..<height {
+            for x in 0..<width {
+                let depthOffset = y * depthBytesPerRow + x * MemoryLayout<Float32>.size
+                let confidenceOffset = y * confidenceBytesPerRow + x * MemoryLayout<UInt8>.size
+                
+                // Get depth value
+                let depth = depthData.load(fromByteOffset: depthOffset, as: Float32.self)
+                
+                // Skip if depth is invalid - more lenient range
+                guard depth > 0 && depth < 20.0 else { continue }
+                
+                // Get confidence value
+                var normalizedConfidence: Float = 1.0
+                if let confidenceData = confidenceData {
+                    let confidenceValue = confidenceData.load(fromByteOffset: confidenceOffset, as: UInt8.self)
+                    normalizedConfidence = Float(confidenceValue) / 255.0
+                }
+                
+                // Convert to camera space coordinates
+                let normalizedX = (2.0 * Float(x) / Float(width)) - 1.0
+                let normalizedY = 1.0 - (2.0 * Float(y) / Float(height))
+                
+                let position = SIMD3<Float>(
+                    normalizedX * depth,
+                    normalizedY * depth,
+                    -depth  // Negative Z is forward in camera space
+                )
+                
+                echoPoints.append((position: position, confidence: normalizedConfidence))
+            }
+        }
+        
+        // Take all points - no sorting by confidence
+        points = echoPoints.map { echo in
+            Point(
+                position: echo.position,
+                confidence: echo.confidence
+            )
+        }
         
         return points
     }
@@ -79,21 +130,31 @@ extension LiDARCaptureSession: ARSessionDelegate {
     }
     
     public func session(_ session: ARSession, didUpdate frame: ARFrame) {
-        guard let depthMap = frame.sceneDepth?.depthMap,
-              let confidenceMap = frame.sceneDepth?.confidenceMap else {
-            return
+        // Process frame on background queue to avoid blocking main thread
+        DispatchQueue.global(qos: .userInitiated).async { [weak self] in
+            guard let self = self,
+                  let depthMap = frame.sceneDepth?.depthMap,
+                  let confidenceMap = frame.sceneDepth?.confidenceMap else {
+                return
+            }
+            
+            let points = self.processDepthMap(depthMap, confidence: confidenceMap)
+            
+            // Create point cloud on main thread to ensure proper memory management
+            DispatchQueue.main.async { [weak self] in
+                guard let self = self else { return }
+                
+                let pointCloud = PointCloud(
+                    points: points,
+                    metadata: [
+                        "captureDevice": "LiDAR",
+                        "frameNumber": "\(frame.timestamp)"
+                    ],
+                    transform: frame.camera.transform
+                )
+                
+                self.delegate?.captureSession(self, didCapturePointCloud: pointCloud)
+            }
         }
-        
-        let points = processDepthMap(depthMap, confidence: confidenceMap)
-        let pointCloud = PointCloud(
-            points: points,
-            metadata: [
-                "captureDevice": "LiDAR",
-                "frameNumber": frame.timestamp
-            ],
-            transform: frame.camera.transform
-        )
-        
-        delegate?.captureSession(self, didCapturePointCloud: pointCloud)
     }
 } 

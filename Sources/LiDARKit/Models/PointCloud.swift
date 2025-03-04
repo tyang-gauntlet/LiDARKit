@@ -49,7 +49,7 @@ public struct PointCloud: Sendable {
     public let timestamp: Date
     
     /// Metadata about the capture
-    public let metadata: [String: Any]
+    public let metadata: [String: String]
     
     /// Transform matrix representing the point cloud's position and orientation
     public var transform: simd_float4x4
@@ -63,7 +63,7 @@ public struct PointCloud: Sendable {
     public init(
         points: [Point],
         timestamp: Date = Date(),
-        metadata: [String: Any] = [:],
+        metadata: [String: String] = [:],
         transform: simd_float4x4 = matrix_identity_float4x4
     ) {
         self.points = points

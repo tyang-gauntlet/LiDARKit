@@ -81,7 +81,7 @@ public class FilePointCloudStorage: PointCloudStorage {
         
         // Load metadata
         let metadataData = try Data(contentsOf: metadataURL)
-        guard let metadata = try JSONSerialization.jsonObject(with: metadataData) as? [String: Any] else {
+        guard (try? JSONSerialization.jsonObject(with: metadataData) as? [String: String]) != nil else {
             throw StorageError.invalidData
         }
         

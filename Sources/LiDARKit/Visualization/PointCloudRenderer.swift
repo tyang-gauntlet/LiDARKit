@@ -172,9 +172,16 @@ public final class SceneKitPointCloudRenderer: PointCloudRenderer {
         colors: [UIColor],
         pointSize: CGFloat
     ) -> SCNGeometry {
+        let vertexData = vertices.withUnsafeBytes { Data($0) }
         let vertexSource = SCNGeometrySource(
-            vertices: vertices,
-            count: vertices.count
+            data: vertexData,
+            semantic: .vertex,
+            vectorCount: vertices.count,
+            usesFloatComponents: true,
+            componentsPerVector: 3,
+            bytesPerComponent: MemoryLayout<Float>.size,
+            dataOffset: 0,
+            dataStride: MemoryLayout<SCNVector3>.stride
         )
         
         let colorData = NSMutableData()
@@ -253,6 +260,8 @@ public final class SceneKitPointCloudRenderer: PointCloudRenderer {
 // MARK: - NSMutableData Extension
 private extension NSMutableData {
     func append<T>(_ values: [T], count: Int) {
-        append(UnsafeRawPointer(values).assumingMemoryBound(to: UInt8.self), length: count)
+        values.withUnsafeBytes { buffer in
+            append(buffer.baseAddress!, length: count)
+        }
     }
 } 
