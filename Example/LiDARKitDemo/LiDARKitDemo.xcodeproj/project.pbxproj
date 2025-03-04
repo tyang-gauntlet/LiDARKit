@@ -1,0 +1,515 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1400042A5ABBF8E5D50DAE24 /* PointCloudExporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC7F4B386B3DA4934B436D8 /* PointCloudExporter.swift */; };
+		37B4B9E7B652D7F6D5793522 /* Shaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = 2EFC363C7002405CC17CD637 /* Shaders.metal */; };
+		60DA82643F900F82F205F91E /* LiDARKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B0AD50B81A86E9DCECAC424 /* LiDARKit.framework */; };
+		6C1445EF735CCCB0938C06E9 /* PointCloud.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8DD02EACA19ABE59FBFEEA8 /* PointCloud.swift */; };
+		71BA0323B01C66B2E7998024 /* LiDARKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5B0AD50B81A86E9DCECAC424 /* LiDARKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		7917B6DD62822F7CC5E586C1 /* PointCloudStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B300C8CE466131A6CCD3EA57 /* PointCloudStorage.swift */; };
+		92C06E35A6E5EA5FF0C962FF /* PointCloudViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A0B5A8D805C53D2F2147D2 /* PointCloudViewController.swift */; };
+		C127B864E2417D8D19F1AE94 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCFE07484149AF3A4453075B /* AppDelegate.swift */; };
+		DE46A7464E0432C61477ACE7 /* LiDARCaptureSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C643A1527BADD6EF7763366 /* LiDARCaptureSession.swift */; };
+		F40CF59F30BFC5B8E13F07C0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6EF58E8F843D58924DC9D3F /* SceneDelegate.swift */; };
+		F7D5F133BFA2EC19D5AA3CF8 /* CaptureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B398EBBF45FD67018D578B /* CaptureViewController.swift */; };
+		F7F868E78394043E5C267055 /* PointCloudRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE3D1B8BD6DC191F00F5B38 /* PointCloudRenderer.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		5860A1145D4C3FB54DCB5F73 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D624157277F71F65D2DFB97E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D4156A9B6593D20F4BD27230;
+			remoteInfo = LiDARKit;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		6C57DE6398AEA6ABA713FE14 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				71BA0323B01C66B2E7998024 /* LiDARKit.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		0C3BE0912C40DFF8B9F400A9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		2EFC363C7002405CC17CD637 /* Shaders.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = Shaders.metal; sourceTree = "<group>"; };
+		46A0B5A8D805C53D2F2147D2 /* PointCloudViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointCloudViewController.swift; sourceTree = "<group>"; };
+		479162D0F41027ED7B6B8916 /* LiDARKitDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LiDARKitDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5B0AD50B81A86E9DCECAC424 /* LiDARKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = LiDARKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7C643A1527BADD6EF7763366 /* LiDARCaptureSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiDARCaptureSession.swift; sourceTree = "<group>"; };
+		A9B398EBBF45FD67018D578B /* CaptureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptureViewController.swift; sourceTree = "<group>"; };
+		B300C8CE466131A6CCD3EA57 /* PointCloudStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointCloudStorage.swift; sourceTree = "<group>"; };
+		CBE3D1B8BD6DC191F00F5B38 /* PointCloudRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointCloudRenderer.swift; sourceTree = "<group>"; };
+		E6EF58E8F843D58924DC9D3F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		E8DD02EACA19ABE59FBFEEA8 /* PointCloud.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointCloud.swift; sourceTree = "<group>"; };
+		FCFE07484149AF3A4453075B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		FFC7F4B386B3DA4934B436D8 /* PointCloudExporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointCloudExporter.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		57F5AE70E8DF33211E22B5EB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				60DA82643F900F82F205F91E /* LiDARKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		050B283ED950A828CDEE8F2C /* Visualization */ = {
+			isa = PBXGroup;
+			children = (
+				CBE3D1B8BD6DC191F00F5B38 /* PointCloudRenderer.swift */,
+			);
+			path = Visualization;
+			sourceTree = "<group>";
+		};
+		06E7E0369F951EB3ADE444D5 /* Capture */ = {
+			isa = PBXGroup;
+			children = (
+				7C643A1527BADD6EF7763366 /* LiDARCaptureSession.swift */,
+			);
+			path = Capture;
+			sourceTree = "<group>";
+		};
+		0B62AA128C12CC107C876608 /* LiDARKit */ = {
+			isa = PBXGroup;
+			children = (
+				06E7E0369F951EB3ADE444D5 /* Capture */,
+				9F98152EBFAC4437F1679331 /* Export */,
+				3A0576D7E86DEA0902C0FABB /* Models */,
+				30F13730AAA4952E2E7724D2 /* Resources */,
+				9FDC6ECFD6ED8EB78EE09E1D /* Storage */,
+				050B283ED950A828CDEE8F2C /* Visualization */,
+			);
+			name = LiDARKit;
+			path = ../../Sources/LiDARKit;
+			sourceTree = "<group>";
+		};
+		30F13730AAA4952E2E7724D2 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				2EFC363C7002405CC17CD637 /* Shaders.metal */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		3A0576D7E86DEA0902C0FABB /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				E8DD02EACA19ABE59FBFEEA8 /* PointCloud.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		59DF4D1B1FD832A77E8C056D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				5B0AD50B81A86E9DCECAC424 /* LiDARKit.framework */,
+				479162D0F41027ED7B6B8916 /* LiDARKitDemo.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		75400F9D3A8ACA81A473E7EC /* LiDARKitDemo */ = {
+			isa = PBXGroup;
+			children = (
+				FCFE07484149AF3A4453075B /* AppDelegate.swift */,
+				A9B398EBBF45FD67018D578B /* CaptureViewController.swift */,
+				0C3BE0912C40DFF8B9F400A9 /* Info.plist */,
+				46A0B5A8D805C53D2F2147D2 /* PointCloudViewController.swift */,
+				E6EF58E8F843D58924DC9D3F /* SceneDelegate.swift */,
+			);
+			path = LiDARKitDemo;
+			sourceTree = "<group>";
+		};
+		9F98152EBFAC4437F1679331 /* Export */ = {
+			isa = PBXGroup;
+			children = (
+				FFC7F4B386B3DA4934B436D8 /* PointCloudExporter.swift */,
+			);
+			path = Export;
+			sourceTree = "<group>";
+		};
+		9FDC6ECFD6ED8EB78EE09E1D /* Storage */ = {
+			isa = PBXGroup;
+			children = (
+				B300C8CE466131A6CCD3EA57 /* PointCloudStorage.swift */,
+			);
+			path = Storage;
+			sourceTree = "<group>";
+		};
+		BB8A87ED83776FA04ACCDE0C = {
+			isa = PBXGroup;
+			children = (
+				0B62AA128C12CC107C876608 /* LiDARKit */,
+				75400F9D3A8ACA81A473E7EC /* LiDARKitDemo */,
+				59DF4D1B1FD832A77E8C056D /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		7DFE41A8B0444CF470C59AAB /* LiDARKitDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E42BAAD68585FDEB70C2E680 /* Build configuration list for PBXNativeTarget "LiDARKitDemo" */;
+			buildPhases = (
+				983CAF611409D8B681B7952E /* Sources */,
+				57F5AE70E8DF33211E22B5EB /* Frameworks */,
+				6C57DE6398AEA6ABA713FE14 /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C03DD06F4072EB4389D0D394 /* PBXTargetDependency */,
+			);
+			name = LiDARKitDemo;
+			productName = LiDARKitDemo;
+			productReference = 479162D0F41027ED7B6B8916 /* LiDARKitDemo.app */;
+			productType = "com.apple.product-type.application";
+		};
+		D4156A9B6593D20F4BD27230 /* LiDARKit */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DCACDBFA3432DA1AD045BED9 /* Build configuration list for PBXNativeTarget "LiDARKit" */;
+			buildPhases = (
+				EFFCEA0EBD9E173FBDD15064 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = LiDARKit;
+			productName = LiDARKit;
+			productReference = 5B0AD50B81A86E9DCECAC424 /* LiDARKit.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D624157277F71F65D2DFB97E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+					7DFE41A8B0444CF470C59AAB = {
+						ProvisioningStyle = Automatic;
+					};
+					D4156A9B6593D20F4BD27230 = {
+						DevelopmentTeam = "timonyang@gmail.com";
+					};
+				};
+			};
+			buildConfigurationList = 96714EACBEC271AE434B0F93 /* Build configuration list for PBXProject "LiDARKitDemo" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = BB8A87ED83776FA04ACCDE0C;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				D4156A9B6593D20F4BD27230 /* LiDARKit */,
+				7DFE41A8B0444CF470C59AAB /* LiDARKitDemo */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		983CAF611409D8B681B7952E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C127B864E2417D8D19F1AE94 /* AppDelegate.swift in Sources */,
+				F7D5F133BFA2EC19D5AA3CF8 /* CaptureViewController.swift in Sources */,
+				92C06E35A6E5EA5FF0C962FF /* PointCloudViewController.swift in Sources */,
+				F40CF59F30BFC5B8E13F07C0 /* SceneDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EFFCEA0EBD9E173FBDD15064 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DE46A7464E0432C61477ACE7 /* LiDARCaptureSession.swift in Sources */,
+				6C1445EF735CCCB0938C06E9 /* PointCloud.swift in Sources */,
+				1400042A5ABBF8E5D50DAE24 /* PointCloudExporter.swift in Sources */,
+				F7F868E78394043E5C267055 /* PointCloudRenderer.swift in Sources */,
+				7917B6DD62822F7CC5E586C1 /* PointCloudStorage.swift in Sources */,
+				37B4B9E7B652D7F6D5793522 /* Shaders.metal in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		C03DD06F4072EB4389D0D394 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D4156A9B6593D20F4BD27230 /* LiDARKit */;
+			targetProxy = 5860A1145D4C3FB54DCB5F73 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		0489C15E01F42DC442A92FDB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		51F6D1E15A546D34C19B06E5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		6F1469432709BE686BC38ADD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = D4B2Y22N4N;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = LiDARKitDemo/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.timonyang.lidarkit.demo;
+				PRODUCT_NAME = LiDARKitDemo;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		80601AED637A609DCC2768B2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
+				CODE_SIGN_IDENTITY = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = "timonyang@gmail.com";
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GENERATE_INFOPLIST_FILE = YES;
+				INSTALL_PATH = "@rpath";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.timonyang.lidarkit;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = Debug;
+		};
+		8AAA49203E808C93F30E1237 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
+				CODE_SIGN_IDENTITY = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = "timonyang@gmail.com";
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GENERATE_INFOPLIST_FILE = YES;
+				INSTALL_PATH = "@rpath";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.timonyang.lidarkit;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = Release;
+		};
+		B15AAC91DEBD4C021AF93784 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = D4B2Y22N4N;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = LiDARKitDemo/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.timonyang.lidarkit.demo;
+				PRODUCT_NAME = LiDARKitDemo;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		96714EACBEC271AE434B0F93 /* Build configuration list for PBXProject "LiDARKitDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				51F6D1E15A546D34C19B06E5 /* Debug */,
+				0489C15E01F42DC442A92FDB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		DCACDBFA3432DA1AD045BED9 /* Build configuration list for PBXNativeTarget "LiDARKit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				80601AED637A609DCC2768B2 /* Debug */,
+				8AAA49203E808C93F30E1237 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		E42BAAD68585FDEB70C2E680 /* Build configuration list for PBXNativeTarget "LiDARKitDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B15AAC91DEBD4C021AF93784 /* Debug */,
+				6F1469432709BE686BC38ADD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D624157277F71F65D2DFB97E /* Project object */;
+}
