@@ -43,7 +43,7 @@ A Swift library for capturing, processing, and visualizing LiDAR point cloud dat
 
 ## Requirements
 
--   iOS 14.0+
+-   iOS 15.0+
 -   Xcode 13.0+
 -   Swift 5.5+
 -   Device with LiDAR sensor (iPhone 12 Pro/Pro Max or newer, iPad Pro 2020 or newer)
