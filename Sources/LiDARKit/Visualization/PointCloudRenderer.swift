@@ -50,14 +50,21 @@ public struct RenderConfiguration {
     }
 }
 
-public class SceneKitPointCloudRenderer: PointCloudRenderer {
-    private var sceneView: SCNView?
+public final class SceneKitPointCloudRenderer: PointCloudRenderer {
+    // MARK: - Properties
+    
+    private weak var sceneView: SCNView?
     private var pointsNode: SCNNode?
     private var configuration: RenderConfiguration
+    private var currentPointCloud: PointCloud?
+    
+    // MARK: - Initialization
     
     public init(configuration: RenderConfiguration = RenderConfiguration()) {
         self.configuration = configuration
     }
+    
+    // MARK: - Public Methods
     
     public func initialize(with view: SCNView) {
         self.sceneView = view
@@ -67,20 +74,8 @@ public class SceneKitPointCloudRenderer: PointCloudRenderer {
         view.scene = scene
         view.backgroundColor = .black
         
-        // Setup camera
-        let camera = SCNCamera()
-        let cameraNode = SCNNode()
-        cameraNode.camera = camera
-        cameraNode.position = SCNVector3(0, 0, 2)
-        scene.rootNode.addChildNode(cameraNode)
-        
-        // Setup lighting
-        let light = SCNLight()
-        light.type = .omni
-        let lightNode = SCNNode()
-        lightNode.light = light
-        lightNode.position = SCNVector3(0, 10, 10)
-        scene.rootNode.addChildNode(lightNode)
+        setupCamera(in: scene)
+        setupLighting(in: scene)
         
         // Enable default camera controls
         view.allowsCameraControl = true
@@ -90,32 +85,16 @@ public class SceneKitPointCloudRenderer: PointCloudRenderer {
     public func render(_ pointCloud: PointCloud) {
         guard let sceneView = sceneView else { return }
         
+        // Store current point cloud for potential re-rendering
+        currentPointCloud = pointCloud
+        
         // Remove existing points
         pointsNode?.removeFromParentNode()
         
         // Create geometry for points
         let vertices = pointCloud.points.map { SCNVector3($0.position) }
         let colors = pointCloud.points.map { point -> UIColor in
-            switch configuration.colorScheme {
-            case .uniform(let color):
-                return color
-            case .confidence:
-                return UIColor(white: CGFloat(point.confidence), alpha: 1)
-            case .height:
-                return colorForHeight(point.position.y)
-            case .intensity:
-                return UIColor(white: CGFloat(point.intensity ?? 0), alpha: 1)
-            case .rgb:
-                if let color = point.color {
-                    return UIColor(
-                        red: CGFloat(color.x) / 255,
-                        green: CGFloat(color.y) / 255,
-                        blue: CGFloat(color.z) / 255,
-                        alpha: CGFloat(color.w) / 255
-                    )
-                }
-                return .white
-            }
+            colorFor(point: point, using: configuration.colorScheme)
         }
         
         let geometry = createPointGeometry(
@@ -145,11 +124,48 @@ public class SceneKitPointCloudRenderer: PointCloudRenderer {
     public func clear() {
         pointsNode?.removeFromParentNode()
         pointsNode = nil
+        currentPointCloud = nil
     }
     
-    // MARK: - Private
+    // MARK: - Private Methods
     
-    private var currentPointCloud: PointCloud?
+    private func setupCamera(in scene: SCNScene) {
+        let camera = SCNCamera()
+        let cameraNode = SCNNode()
+        cameraNode.camera = camera
+        cameraNode.position = SCNVector3(0, 0, 2)
+        scene.rootNode.addChildNode(cameraNode)
+    }
+    
+    private func setupLighting(in scene: SCNScene) {
+        let light = SCNLight()
+        light.type = .omni
+        let lightNode = SCNNode()
+        lightNode.light = light
+        lightNode.position = SCNVector3(0, 10, 10)
+        scene.rootNode.addChildNode(lightNode)
+    }
+    
+    private func colorFor(point: Point, using scheme: RenderConfiguration.ColorScheme) -> UIColor {
+        switch scheme {
+        case .uniform(let color):
+            return color
+        case .confidence:
+            return UIColor(white: CGFloat(point.confidence), alpha: 1)
+        case .height:
+            return colorForHeight(point.position.y)
+        case .intensity:
+            return UIColor(white: CGFloat(point.intensity ?? 0), alpha: 1)
+        case .rgb:
+            guard let color = point.color else { return .white }
+            return UIColor(
+                red: CGFloat(color.x) / 255,
+                green: CGFloat(color.y) / 255,
+                blue: CGFloat(color.z) / 255,
+                alpha: CGFloat(color.w) / 255
+            )
+        }
+    }
     
     private func createPointGeometry(
         vertices: [SCNVector3],
@@ -161,19 +177,20 @@ public class SceneKitPointCloudRenderer: PointCloudRenderer {
             count: vertices.count
         )
         
-        let colorData = colors.map { color -> NSData in
+        let colorData = NSMutableData()
+        for color in colors {
             var red: CGFloat = 0
             var green: CGFloat = 0
             var blue: CGFloat = 0
             var alpha: CGFloat = 0
             color.getRed(&red, green: &green, blue: &blue, alpha: &alpha)
             
-            var colorArray: [Float] = [Float(red), Float(green), Float(blue), Float(alpha)]
-            return NSData(bytes: &colorArray, length: MemoryLayout<Float>.size * 4)
+            let colorArray: [Float] = [Float(red), Float(green), Float(blue), Float(alpha)]
+            colorData.append(colorArray, count: MemoryLayout<Float>.size * 4)
         }
         
         let colorSource = SCNGeometrySource(
-            data: NSMutableData(data: colorData.reduce(Data(), { $0 + ($1 as Data) })),
+            data: colorData as Data,
             semantic: .color,
             vectorCount: colors.count,
             usesFloatComponents: true,
@@ -230,5 +247,12 @@ public class SceneKitPointCloudRenderer: PointCloudRenderer {
             let node = SCNNode(geometry: geometry)
             parentNode.addChildNode(node)
         }
+    }
+}
+
+// MARK: - NSMutableData Extension
+private extension NSMutableData {
+    func append<T>(_ values: [T], count: Int) {
+        append(UnsafeRawPointer(values).assumingMemoryBound(to: UInt8.self), length: count)
     }
 } 
