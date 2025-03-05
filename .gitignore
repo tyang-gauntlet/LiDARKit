@@ -30,6 +30,11 @@ playground.xcworkspace
 # .swiftpm
 
 .build/
+build/
+DerivedData/
+*.build/
+Example/*/build/
+Example/*/DerivedData/
 
 # CocoaPods
 #
@@ -63,3 +68,18 @@ fastlane/test_output
 
 # macOS
 .DS_Store
+
+# API Keys - Don't commit sensitive information
+ApiKeys.plist
+
+# Additional Xcode build artifacts
+*.xcarchive
+*.xcuserstate
+*.xccheckout
+*.moved-aside
+*.xcscmblueprint
+*.xcuserstate
+*.xcworkspace/xcshareddata/
+*.xcodeproj/xcuserdata/
+*.xcodeproj/project.xcworkspace/xcuserdata/
+*.xcworkspace/xcuserdata/
