@@ -1,4 +1,4 @@
-name: LiDARKitDemo
+name: LiDARKitAI
 options:
     deploymentTarget:
         iOS: 15.0
@@ -27,11 +27,18 @@ targets:
                 LD_RUNPATH_SEARCH_PATHS:
                     ["@executable_path/Frameworks", "@loader_path/Frameworks"]
                 DEVELOPMENT_TEAM: ""
-    LiDARKitDemo:
+    LiDARKitAI:
         type: application
         platform: iOS
         sources:
-            - LiDARKitDemo
+            - path: LiDARKitAI
+              excludes:
+                  - "ApiKeys.plist.template"
+                  - "LiDARKitAIKeys.plist"
+              includes:
+                  - "**/*.swift"
+                  - "Resources/**"
+                  - "ApiKeys.plist"
         dependencies:
             - target: LiDARKit
         settings:
@@ -40,15 +47,33 @@ targets:
                 CODE_SIGN_STYLE: Automatic
                 CODE_SIGN_IDENTITY: "Apple Development"
                 DEVELOPMENT_TEAM: ""
-                PRODUCT_BUNDLE_IDENTIFIER: "com.timonyang.lidarkit.demo"
-                PRODUCT_NAME: LiDARKitDemo
+                PRODUCT_BUNDLE_IDENTIFIER: "com.timonyang.lidarkit.ai"
+                PRODUCT_NAME: LiDARKitAI
                 GENERATE_INFOPLIST_FILE: YES
                 LD_RUNPATH_SEARCH_PATHS: ["@executable_path/Frameworks"]
+                COPY_PHASE_STRIP: NO
+                DEBUG_INFORMATION_FORMAT: dwarf
+                ENABLE_BITCODE: NO
+                SWIFT_OPTIMIZATION_LEVEL: "-Onone"
+                GCC_OPTIMIZATION_LEVEL: 0
+                ONLY_ACTIVE_ARCH: YES
+                ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+                ENABLE_TESTABILITY: YES
+                VALIDATE_PRODUCT: NO
+            debug:
+                SWIFT_ACTIVE_COMPILATION_CONDITIONS: DEBUG
         info:
-            path: LiDARKitDemo/Info.plist
+            path: LiDARKitAI/Info.plist
             properties:
-                CFBundleDisplayName: LiDARKit Demo
-                UILaunchStoryboardName: ""
+                CFBundleDisplayName: LiDARKit AI
+                CFBundleName: LiDARKitAI
+                UIApplicationSupportsIndirectInputEvents: true
+                UIRequiresFullScreen: true
+                UILaunchScreen:
+                    UIColorName: systemBackground
+                    UINavigationBar:
+                        UITitleTextAttributes:
+                            UIColor: systemBackground
                 UIApplicationSceneManifest:
                     UIApplicationSupportsMultipleScenes: false
                     UISceneConfigurations:
@@ -59,3 +84,4 @@ targets:
                 UIRequiredDeviceCapabilities: [armv7, arkit]
                 UISupportedInterfaceOrientations:
                     [UIInterfaceOrientationPortrait]
+                UIViewControllerBasedStatusBarAppearance: true

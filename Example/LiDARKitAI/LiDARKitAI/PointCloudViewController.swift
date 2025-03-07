@@ -404,23 +404,6 @@ class PointCloudViewController: UIViewController {
             popoverController.permittedArrowDirections = []
         }
         
-        // Add actions for different visualizations
-        alertController.addAction(UIAlertAction(title: "Show Height Map", style: .default) { [weak self] _ in
-            self?.updateVisualization(mode: .height)
-        })
-        
-        alertController.addAction(UIAlertAction(title: "Show Density", style: .default) { [weak self] _ in
-            self?.updateVisualization(mode: .density)
-        })
-        
-        alertController.addAction(UIAlertAction(title: "Show Planes", style: .default) { [weak self] _ in
-            self?.updateVisualization(mode: .planes)
-        })
-        
-        alertController.addAction(UIAlertAction(title: "Reset View", style: .default) { [weak self] _ in
-            self?.updateVisualization(mode: .normal)
-        })
-        
         alertController.addAction(UIAlertAction(title: "OK", style: .cancel))
         
         present(alertController, animated: true)

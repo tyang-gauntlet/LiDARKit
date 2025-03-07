@@ -7,9 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		073DA9B47091F3D7D833F198 /* ApiKeys.plist.template in Resources */ = {isa = PBXBuildFile; fileRef = E3645B2F02137EB4B65687CC /* ApiKeys.plist.template */; };
-		073DA9B47091F3D7D833F199 /* ApiKeys.plist in Resources */ = {isa = PBXBuildFile; fileRef = E3645B2F02137EB4B65687CD /* ApiKeys.plist */; };
 		172377FF2B997751A165408D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967A9B869023C5C216D87288 /* SceneDelegate.swift */; };
+		2A66CF2780D2EF7ACF5B62DD /* ApiKeys.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1AE5163BEAA07C0C54AD5E3B /* ApiKeys.plist */; };
 		3C529B512D4EE8AE0C233E47 /* KeychainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42FC88359ACAB6A493DCFA4 /* KeychainManager.swift */; };
 		3E4CE6C39CF6F02EB30DE388 /* LiDARKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2F3FB891189D5E7BD5662B5 /* LiDARKit.framework */; };
 		45780C419FDE1A194F7770CC /* LiDARCaptureSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B724E533D8F8F4EDA48896C /* LiDARCaptureSession.swift */; };
@@ -17,6 +16,7 @@
 		7032DBA2568A2785550C54C0 /* LiDARKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A2F3FB891189D5E7BD5662B5 /* LiDARKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		77893D55A3E4CE0E5ABDC74C /* PointCloudStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16183CC64343BA0C370C0560 /* PointCloudStorage.swift */; };
 		80DD869FC3C944F527EE39A4 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60407AC7D619FCF33B51FFEA /* SettingsViewController.swift */; };
+		81EA8F87AA4B531BC99B506F /* ApiKeys.plist.template in Resources */ = {isa = PBXBuildFile; fileRef = 209BFC9661F2CB310DFC4E68 /* ApiKeys.plist.template */; };
 		8F1A4689109E7DF18A5E9E4D /* Shaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = E3E7175808540CCE4B283E42 /* Shaders.metal */; };
 		C0465C6D7DC7777061FD38AC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71BD3BA2E65E5C64073331A /* AppDelegate.swift */; };
 		C1F69963485ADF7C9A5CAFA8 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671A909721FEE2CED6447A59 /* Config.swift */; };
@@ -49,21 +49,13 @@
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		073DA9B47091F3D7D833F201 /* Copy ApiKeys */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 7;
-			files = (
-			);
-			name = "Copy ApiKeys";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		10C32BF7B944BA9503CED2B9 /* PointCloudRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointCloudRenderer.swift; sourceTree = "<group>"; };
 		16183CC64343BA0C370C0560 /* PointCloudStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointCloudStorage.swift; sourceTree = "<group>"; };
+		1AE5163BEAA07C0C54AD5E3B /* ApiKeys.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = ApiKeys.plist; sourceTree = "<group>"; };
+		209BFC9661F2CB310DFC4E68 /* ApiKeys.plist.template */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = ApiKeys.plist.template; sourceTree = "<group>"; };
 		22A87CF5FB230F7D75C04401 /* PointCloudViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointCloudViewController.swift; sourceTree = "<group>"; };
 		395180E8A63C423A97635A7F /* PointCloud.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointCloud.swift; sourceTree = "<group>"; };
 		5F3B02A677D7D3CD66ECAB29 /* OpenAIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIService.swift; sourceTree = "<group>"; };
@@ -75,10 +67,7 @@
 		9B724E533D8F8F4EDA48896C /* LiDARCaptureSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiDARCaptureSession.swift; sourceTree = "<group>"; };
 		A2F3FB891189D5E7BD5662B5 /* LiDARKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = LiDARKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A71BD3BA2E65E5C64073331A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		B7830050EAF3A5A29F292ACF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		BEB5175D55CF7EBEDD8AE393 /* LiDARKitAI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LiDARKitAI.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		E3645B2F02137EB4B65687CC /* ApiKeys.plist.template */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = ApiKeys.plist.template; sourceTree = "<group>"; };
-		E3645B2F02137EB4B65687CD /* ApiKeys.plist */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = ApiKeys.plist; sourceTree = "<group>"; };
 		E3E7175808540CCE4B283E42 /* Shaders.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = Shaders.metal; sourceTree = "<group>"; };
 		F42FC88359ACAB6A493DCFA4 /* KeychainManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -162,17 +151,15 @@
 		92A1521B46BD84EE141075F2 /* LiDARKitAI */ = {
 			isa = PBXGroup;
 			children = (
-				E3645B2F02137EB4B65687CC /* ApiKeys.plist.template */,
-				E3645B2F02137EB4B65687CD /* ApiKeys.plist */,
 				A71BD3BA2E65E5C64073331A /* AppDelegate.swift */,
 				777D756E92DB7EFDECA3519B /* CaptureViewController.swift */,
 				671A909721FEE2CED6447A59 /* Config.swift */,
-				B7830050EAF3A5A29F292ACF /* Info.plist */,
 				F42FC88359ACAB6A493DCFA4 /* KeychainManager.swift */,
 				5F3B02A677D7D3CD66ECAB29 /* OpenAIService.swift */,
 				22A87CF5FB230F7D75C04401 /* PointCloudViewController.swift */,
 				967A9B869023C5C216D87288 /* SceneDelegate.swift */,
 				60407AC7D619FCF33B51FFEA /* SettingsViewController.swift */,
+				B9F0FAA1474FEB95018E5E3B /* Resources */,
 			);
 			path = LiDARKitAI;
 			sourceTree = "<group>";
@@ -183,6 +170,15 @@
 				10C32BF7B944BA9503CED2B9 /* PointCloudRenderer.swift */,
 			);
 			path = Visualization;
+			sourceTree = "<group>";
+		};
+		B9F0FAA1474FEB95018E5E3B /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				1AE5163BEAA07C0C54AD5E3B /* ApiKeys.plist */,
+				209BFC9661F2CB310DFC4E68 /* ApiKeys.plist.template */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		F506F96C82D2050429F9C8C8 /* Resources */ = {
@@ -200,12 +196,10 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5747861573D8C72EB3B2FF78 /* Build configuration list for PBXNativeTarget "LiDARKitAI" */;
 			buildPhases = (
-				073DA9B47091F3D7D833F200 /* Copy ApiKeys Template */,
 				CCBD388644667C2470D0F3C4 /* Sources */,
 				480374CE7ACC974058F689B1 /* Resources */,
 				916B5284ECA97E157F89BDC6 /* Frameworks */,
 				D7FA7C24674886A31C48D8ED /* Embed Frameworks */,
-				073DA9B47091F3D7D833F201 /* Copy ApiKeys */,
 			);
 			buildRules = (
 			);
@@ -239,7 +233,7 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
-				LastUpgradeCheck = 1430;
+				LastUpgradeCheck = 1620;
 				TargetAttributes = {
 					29EE639EA53D72D3F4254B5C = {
 						ProvisioningStyle = Automatic;
@@ -272,7 +266,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				073DA9B47091F3D7D833F198 /* ApiKeys.plist.template in Resources */,
+				2A66CF2780D2EF7ACF5B62DD /* ApiKeys.plist in Resources */,
+				81EA8F87AA4B531BC99B506F /* ApiKeys.plist.template in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -317,29 +312,6 @@
 		};
 /* End PBXTargetDependency section */
 
-/* Begin PBXShellScriptBuildPhase section */
-		073DA9B47091F3D7D833F200 /* Copy ApiKeys Template */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"$(SRCROOT)/LiDARKitAI/ApiKeys.plist.template",
-			);
-			name = "Copy ApiKeys Template";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/ApiKeys.plist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "# Check if ApiKeys.plist exists in source directory\nif [ ! -f \"${SRCROOT}/LiDARKitAI/ApiKeys.plist\" ]; then\n  # Create it from template\n  cp \"${SRCROOT}/LiDARKitAI/ApiKeys.plist.template\" \"${SRCROOT}/LiDARKitAI/ApiKeys.plist\"\n  echo \"Created ApiKeys.plist from template\"\nfi\n\n# Create a copy in the derived data directory to satisfy the build system\ncp \"${SRCROOT}/LiDARKitAI/ApiKeys.plist\" \"${DERIVED_FILE_DIR}/ApiKeys.plist\"\n";
-		};
-/* End PBXShellScriptBuildPhase section */
-
 /* Begin XCBuildConfiguration section */
 		0060A1CCCE63EC79664C8C59 /* Release */ = {
 			isa = XCBuildConfiguration;
@@ -352,6 +324,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_MODULE_VERIFIER = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INSTALL_PATH = "@rpath";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
@@ -360,6 +333,7 @@
 					"@loader_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0.0;
+				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu11 gnu++14";
 				PRODUCT_BUNDLE_IDENTIFIER = com.timonyang.lidarkit;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -379,6 +353,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_MODULE_VERIFIER = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INSTALL_PATH = "@rpath";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
@@ -387,6 +362,7 @@
 					"@loader_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0.0;
+				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu11 gnu++14";
 				PRODUCT_BUNDLE_IDENTIFIER = com.timonyang.lidarkit;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -432,6 +408,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -488,6 +465,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -520,6 +498,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = D4B2Y22N4N;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = LiDARKitAI/Info.plist;
@@ -537,6 +517,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = D4B2Y22N4N;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = LiDARKitAI/Info.plist;

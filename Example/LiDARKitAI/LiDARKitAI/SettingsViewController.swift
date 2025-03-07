@@ -4,7 +4,7 @@ class SettingsViewController: UIViewController {
     
     private let apiKeyTextField = UITextField()
     private let saveButton = UIButton(type: .system)
-    private let modelSelectionSegmentedControl = UISegmentedControl(items: ["GPT-3.5", "GPT-4"])
+    private let modelSelectionSegmentedControl = UISegmentedControl(items: ["GPT-4o-mini", "GPT-4"])
     private let maxTokensSlider = UISlider()
     private let maxTokensLabel = UILabel()
     
@@ -88,7 +88,7 @@ class SettingsViewController: UIViewController {
         }
         
         // Set model selection
-        if Config.defaultModelName == "gpt-4" {
+        if Config.defaultModelName == "gpt-4o-mini" {
             modelSelectionSegmentedControl.selectedSegmentIndex = 1
         } else {
             modelSelectionSegmentedControl.selectedSegmentIndex = 0
